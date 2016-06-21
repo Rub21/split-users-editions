@@ -1,6 +1,6 @@
 # split-users-editions
 
-split users editions into small geojson files
+Split users editions into small geojson files
 
 #### JSON Imput
 
