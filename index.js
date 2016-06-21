@@ -3,7 +3,7 @@
 var fs = require('fs');
 var readline = require('readline');
 var d = new Date();
-d.setDate(d.getDate() - 1);
+d.setDate(d.getDate() - 5);
 d.setHours(0, 0, 0, 0);
 yesterday = Math.floor(d.getTime() / 1000);
 var argv = require('minimist')(process.argv.slice(2));
@@ -51,8 +51,12 @@ rd.on('line', function(line) {
 
 function date(timestamp) {
   var date = new Date(timestamp * 1000);
-  var mes = date.getMonth() + 1;
-  var dia = date.getDate();
+  var mes = pad(date.getMonth() + 1);
+  var dia = pad(date.getDate());
   var year = date.getFullYear();
   return year + "-" + mes + "-" + dia;
+}
+
+function pad(n) {
+  return (n < 10) ? ("0" + n) : n;
 }
