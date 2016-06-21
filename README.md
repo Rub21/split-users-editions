@@ -1,12 +1,21 @@
 # split-users-editions
 
-split users editions into small geojson file
+split users editions into small geojson files
 
-## JSON Imput
+#### JSON Imput
 
 The json file should be generated using [osmlint](https://github.com/osmlab/osmlint)
 
-## GeoJson Output
+#### GeoJson Output
 
 The app generate a geojson file for each osm user.
+
+## how to use it?
+
+```
+ npm install -g splitue
+
+ splitue team.json
+  
+```
 
