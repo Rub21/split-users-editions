@@ -4,7 +4,7 @@ var fs = require('fs');
 var readline = require('readline');
 var d = new Date();
 d.setDate(d.getDate() - 1);
-d.setHours(0,0,0,0);
+d.setHours(0, 0, 0, 0);
 yesterday = Math.floor(d.getTime() / 1000);
 var argv = require('minimist')(process.argv.slice(2));
 
