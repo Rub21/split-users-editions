@@ -1,8 +1,11 @@
 #!/usr/bin/env node
+
 var fs = require('fs');
 var readline = require('readline');
-var time = require('time')(Date);
-var yesterday = (time.time() - (2 * 24 * 60 * 60 + 12 * 60 * 60));
+var d = new Date();
+d.setDate(d.getDate() - 1);
+d.setHours(0,0,0,0);
+yesterday = Math.floor(d.getTime() / 1000);
 var argv = require('minimist')(process.argv.slice(2));
 
 var users_latest = {};
