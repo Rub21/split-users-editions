@@ -1,5 +1,5 @@
 {
-  "name": "split-users-editions",
+  "name": "splitue",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
@@ -7,18 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "split-users-editions": "index.js"
+    "splitue": "index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rub21/split-users-editions.git"
+    "url": "git+https://github.com/Rub21/splitue.git"
   },
   "author": "Ruben Lopez M <ruben@mapbox.com> (http://rub21.github.io/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rub21/split-users-editions/issues"
+    "url": "https://github.com/Rub21/splitue/issues"
   },
-  "homepage": "https://github.com/Rub21/split-users-editions#readme",
+  "homepage": "https://github.com/Rub21/splitue#readme",
   "dependencies": {
     "minimist": "^1.2.0",
     "readline": "^1.3.0",
