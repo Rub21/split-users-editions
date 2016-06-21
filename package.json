@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "splitue": "index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rub21/split-users-editions.git"

@@ -1,12 +1,14 @@
+#!/usr/bin/env node
 var fs = require('fs');
 var readline = require('readline');
 var time = require('time')(Date);
 var yesterday = (time.time() - (2 * 24 * 60 * 60 + 12 * 60 * 60));
 var argv = require('minimist')(process.argv.slice(2));
+
 var users_latest = {};
 var users_lastDay = {};
 var rd = readline.createInterface({
-  input: fs.createReadStream(argv.file),
+  input: fs.createReadStream(argv._[0]),
   output: process.stdout,
   terminal: false
 });

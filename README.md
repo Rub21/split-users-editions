@@ -4,7 +4,7 @@ split users editions into small geojson file
 
 ## JSON Imput
 
-The json file came from [osmlint](https://github.com/osmlab/osmlint)
+The json file should be generated using [osmlint](https://github.com/osmlab/osmlint)
 
 ## GeoJson Output
 
