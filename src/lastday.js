@@ -14,7 +14,6 @@ module.exports = {
       output: process.stdout,
       terminal: false
     });
-
     rd.on('line', function(line) {
       var obj = JSON.parse(line);
       var lastedits = {

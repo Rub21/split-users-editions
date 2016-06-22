@@ -11,6 +11,7 @@ program
   .version('0.0.1')
   .option('-d, --dateaday', 'filter daya from las day')
   .option('-t, --datateam', 'Filter data from mapbox data team')
+  .option('-s, --splitperuser', 'Split json file into small geojson files')
   .option('-g, --togeojson', 'Convert osmlint output to geojson')
   .parse(process.argv);
 
@@ -20,6 +21,9 @@ if (program.dateaday) {
 }
 if (program.datateam) {
   datateam.filter(file);
+}
+if (program.splitperuser) {
+  datateam.split(file);
 }
 if (program.togeojson) {
   togeojson.convert(file);
