@@ -45,7 +45,7 @@ rd.on('line', function(line) {
     fs.writeFile('latest-' + user + '.geojson', JSON.stringify(users_latest[user]));
   }
   for (var usuario in users_lastDay) {
-    fs.writeFile(date(yesterday) + '-' + usuario + '.geojson', JSON.stringify(users_latest[usuario]));
+    fs.writeFile(date(yesterday) + '-' + usuario + '.geojson', JSON.stringify(users_lastDay[usuario]));
   }
 });
 
