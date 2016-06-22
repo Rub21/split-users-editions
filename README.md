@@ -1,6 +1,6 @@
 # split-users-editions
 
-Split users editions into small geojson files
+Split mapbox-data-team users editions into small geojson files
 
 #### JSON Imput
 

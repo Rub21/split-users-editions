@@ -1,62 +1,26 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var readline = require('readline');
-var d = new Date();
-d.setDate(d.getDate() - 1);
-d.setHours(0, 0, 0, 0);
-yesterday = Math.floor(d.getTime() / 1000);
-var argv = require('minimist')(process.argv.slice(2));
+'use strict';
 
-var users_latest = {};
-var users_lastDay = {};
-var rd = readline.createInterface({
-  input: fs.createReadStream(argv._[0]),
-  output: process.stdout,
-  terminal: false
-});
+var program = require('commander');
+var datateam = require('./src/datateam');
+var lastday = require('./src/lastday');
+var togeojson = require('./src/togeojson');
 
-rd.on('line', function(line) {
-  var obj = JSON.parse(line);
-  obj.features.forEach(function(val) {
-    //last 7 days editions
-    if (users_latest[val.properties['@user']]) {
-      users_latest[val.properties['@user']].features.push(val);
-    } else {
-      users_latest[val.properties['@user']] = {
-        "type": "FeatureCollection",
-        "features": [val]
-      };
-    }
-    //yesterday editions
-    if (val.properties['@timestamp'] > yesterday) {
-      if (users_lastDay[val.properties['@user']]) {
-        users_lastDay[val.properties['@user']].features.push(val);
-      } else {
-        users_lastDay[val.properties['@user']] = {
-          "type": "FeatureCollection",
-          "features": [val]
-        };
-      }
-    }
-  });
-}).on('close', function() {
-  for (var user in users_latest) {
-    fs.writeFile('latest-' + user + '.geojson', JSON.stringify(users_latest[user]));
-  }
-  for (var usuario in users_lastDay) {
-    fs.writeFile(date(yesterday) + '-' + usuario + '.geojson', JSON.stringify(users_lastDay[usuario]));
-  }
-});
+program
+  .version('0.0.1')
+  .option('-d, --dateaday', 'filter daya from las day')
+  .option('-t, --datateam', 'Filter data from mapbox data team')
+  .option('-g, --togeojson', 'Convert osmlint output to geojson')
+  .parse(process.argv);
 
-function date(timestamp) {
-  var date = new Date(timestamp * 1000);
-  var mes = pad(date.getMonth() + 1);
-  var dia = pad(date.getDate());
-  var year = date.getFullYear();
-  return year + "-" + mes + "-" + dia;
+var file = process.argv.slice(2)[1];
+if (program.dateaday) {
+  lastday.filter(file);
 }
-
-function pad(n) {
-  return (n < 10) ? ("0" + n) : n;
+if (program.datateam) {
+  datateam.filter(file);
+}
+if (program.togeojson) {
+  togeojson.convert(file);
 }
